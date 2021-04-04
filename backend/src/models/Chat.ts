@@ -1,4 +1,4 @@
-import {Schema,model,Document, Mongoose} from 'mongoose';
+import {Schema,model,Document, Mongoose, Types} from 'mongoose';
 var mongoose = require('mongoose');
 var SchemaMongo = mongoose.Schema;
 
@@ -11,6 +11,10 @@ const schema = new Schema({
     
 });
 
-const Chat = mongoose.model('Caht',schema);
+interface IChat extends Document {
+    with: Types.ObjectId | Record<string,unknown>;
+    offerRelated: Types.ObjectId | Record<string,unknown>;
+    messages: string;
+};
 
-export default Chat;
+export default model<IChat>('Chat',schema);

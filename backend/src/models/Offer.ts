@@ -1,4 +1,4 @@
-import {Schema,model,Document, Mongoose} from 'mongoose';
+import {Schema,model,Document, Mongoose, Types} from 'mongoose';
 var mongoose = require('mongoose');
 var SchemaMongo = mongoose.Schema;
 
@@ -12,6 +12,15 @@ const schema = new Schema({
     price: Number,
 });
 
-const Offer = mongoose.model('Offer',schema);
+interface IOffer extends Document {
+    title: string;
+    description: string;
+    pictures: string;
+    ubication: string;
+    owner: Types.ObjectId | Record<string, unknown>;
+    village: string;
+    price: number;
 
-export default Offer;
+};
+
+export default model<IOffer>('Offer',schema);
