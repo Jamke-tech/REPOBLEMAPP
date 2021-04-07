@@ -23,10 +23,10 @@ export async function createUser(
   req: Request,
   res: Response
 ): Promise<Response> {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
   const newUser = {
-    userName: username,
+    userName: userName,
     password: password,
   };
 

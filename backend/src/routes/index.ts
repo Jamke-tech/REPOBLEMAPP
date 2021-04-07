@@ -20,11 +20,19 @@ router.route('/')
 
 //IMPORTAR LES FUNCIONS DELS CONTROLLERS
 
-router.route("/user").get(getUsers).post(createUser);
-router.route("/user/:id").put(updateUser).get(getUser);
+
+//RUTES DELS USUARIS
+router.route("/user")
+    .get(getUsers)
+    .post(createUser);
+
+router.route("/user/:id")
+    .put(updateUser)
+    .get(getUser);
+
+
 
 //RUTES PER LES OFERTES
-
 router.route('/offer')
     .post(createOffer)
     .delete(deleteOffer)
