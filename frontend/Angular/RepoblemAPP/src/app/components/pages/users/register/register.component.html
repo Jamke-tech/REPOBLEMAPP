@@ -1,85 +1,80 @@
 <div class="row justify-content-center">
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3" style="margin-top: 30px;">Billing address</h4>
+      <h4 class="mb-3" style="margin-top: 30px;">Dades del nou usuari</h4>
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
+            <label for="firstName">Nom</label>
             <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
             <div class="invalid-feedback">
-              Valid first name is required.
+              El nom es un camp obligatori.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
+            <label for="lastName">Cognoms</label>
             <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
             <div class="invalid-feedback">
-              Valid last name is required.
+              El cognom es un camp obligatori.
             </div>
           </div>
         </div>
   
         <div class="mb-3">
-          <label for="username">Username</label>
+          <label for="username">Nom d'usuari</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
             </div>
             <input type="text" class="form-control" id="username" placeholder="Username" required>
             <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
+              El nom d'usuari es un camp obligatori.
             </div>
           </div>
         </div>
   
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <label for="email">Correu <span class="text-muted">(Optional)</span></label>
+          <input type="email" class="form-control" id="email" placeholder="EAmola@exemple.com">
           <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
+            Introdueix un correu valid si us plau.
           </div>
         </div>
   
         <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <label for="address">Adreça</label>
+          <input type="text" class="form-control" id="address" placeholder="Carrer San Pepito,1234" required>
           <div class="invalid-feedback">
-            Please enter your shipping address.
+            Si us plau, introdueix la teva adreça.
           </div>
-        </div>
-  
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
         </div>
   
         <div class="row">
     <div class="col-md-5 mb-3">
-      <label for="country">Country</label>
+      <label for="country">Comarca</label>
       <select class="custom-select d-block w-100" id="country" required>
-        <option value="">Choose...</option>
+        <option value="">Seleccioni...</option>
         <option>United States</option>
       </select>
       <div class="invalid-feedback">
-        Please select a valid country.
+        Seleccioni una comarca si us plau.
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="state">State</label>
+      <label for="state">Població</label>
       <select class="custom-select d-block w-100" id="state" required>
-        <option value="">Choose...</option>
+        <option value="">Seleccioni...</option>
         <option>California</option>
         
       </select>
       <div class="invalid-feedback">
-        Please provide a valid state.
+        Si us plau, seleccioni un poble.
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="zip">Zip</label>
+      <label for="zip">Codi postal</label>
       <input type="text" class="form-control" id="zip" placeholder="" required>
       <div class="invalid-feedback">
-        Zip code required.
+        CP necessari.
       </div>
     </div>
   </div>
