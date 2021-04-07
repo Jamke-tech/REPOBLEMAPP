@@ -1,10 +1,15 @@
+import { Offer } from "./offer.interface";
+
 export interface User{
-    avatar: string;
+    profilePhoto: string;
     name: string;
     surname: string;
-    username: string;
+    userName: string;
     password: string;
     email: string;
-    tlf: string;
+    phone: string;
+    birthDate: Date;
+    savedOffers:Array<Offer>;
+    social: string;
 
 }

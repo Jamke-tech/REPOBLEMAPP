@@ -8,7 +8,7 @@ import { User } from '../../../shared/models/user.interface';
     <div class="dsc-card" *ngIf="user">
         <a [routerLink]="['/users-details']">
             <div class="dsc-card__img">
-                <img [src]="user.avatar" alt="">
+                <img [src]="user.profilePhoto" alt="">
             </div>
             <div class="dsc-card__info">
                 <h2>{{ user.name }}</h2>

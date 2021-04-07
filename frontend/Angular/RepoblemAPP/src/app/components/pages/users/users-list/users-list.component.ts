@@ -6,6 +6,7 @@ import {
   ActivatedRoute, NavigationEnd, ParamMap, Router,
 } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -14,7 +15,7 @@ import { filter, take } from 'rxjs/operators';
 })
 export class UsersListComponent implements OnInit {
 
-  //users: User[] = [];
+  users: User[] = [];
   private query: string ="";;
   
   constructor(  
@@ -28,12 +29,16 @@ export class UsersListComponent implements OnInit {
   
   public user: User = {
     name: 'TOni Oller',
-    username:'pepito',
-    avatar: 'https://recerca.upc.edu/bampla/en/Personnel/staff_members/Oller-Antoni/2008-01-08.4864239201/@@images/image.jpeg',
+    userName:'pepito',
+    profilePhoto: 'https://recerca.upc.edu/bampla/en/Personnel/staff_members/Oller-Antoni/2008-01-08.4864239201/@@images/image.jpeg',
     surname: 'string',
     password: 'tring',
     email: 'toni.oller@upc.edu',
-    tlf: 'string',
+    phone: 'string',
+    savedOffers: [],
+    social: 'pan',
+    birthDate: new Date(),
+
 
   }
 
@@ -55,6 +60,12 @@ export class UsersListComponent implements OnInit {
         }
       
   })
-}*/
+}
 
+private deleteUser(): void{
+
+
+
+}
+*/
 }

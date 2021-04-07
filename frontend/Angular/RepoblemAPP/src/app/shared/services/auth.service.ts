@@ -15,7 +15,7 @@ export class AuthService {
   searchCharacters(query = ''):Observable<User[]> {
     return this.http.get<User[]>(`${environment.baseUrlAPI}/`);
 
-  getDetails() {
+  getDetails(id:number):Observable<User>{
     return this.http.get<User>(`${environment.baseUrlAPI}/${id}`);  
   }
 
