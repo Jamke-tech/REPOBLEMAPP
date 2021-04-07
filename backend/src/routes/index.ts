@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import { createOffer, deleteOffer } from '../controllers/offer.controller';
 import multer from '../libs/multer'
 
 //Construim el router on posarem totes les entrades de la API
@@ -12,6 +13,16 @@ router.route('/')
     .get ( Funció que ha de fer)*/
 
 //IMPORTAR LES FUNCIONS DELS CONTROLLERS
+
+
+
+
+//RUTES PER LES OFERTES
+
+router.route('/offer')
+    .post(createOffer)
+    .delete(deleteOffer)
+
 
 
 
