@@ -26,7 +26,7 @@ export async function createUser(
   const { username, password } = req.body;
 
   const newUser = {
-    username: username,
+    userName: username,
     password: password,
   };
 
