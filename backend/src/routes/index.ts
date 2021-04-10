@@ -2,6 +2,7 @@ import { createOffer, deleteOffer } from '../controllers/offer.controller';
 import { Router } from "express";
 import {
   createUser,
+  createCompleteUser,
   getUser,
   getUsers,
   updateUser,
@@ -30,6 +31,12 @@ router.route("/user/:id")
     .put(updateUser)
     .get(getUser);
 
+    router.route("/completeUser")
+    .get(getUsers)
+    .post(createCompleteUser);
+
+router.route("/getUser/:id")
+    .get(getUser);
 
 
 //RUTES PER LES OFERTES
