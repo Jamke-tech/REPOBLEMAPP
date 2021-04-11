@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.interface'
-import { Observable } from 'rxjs'
+import { User } from '../models/user.interface';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  updateUser(id: string) {
+    return this.http.put<User>(`${environment.baseUrlAPI}/user/${id}`, id);
+  }
 
-/*
+  /*
   searchCharacters(query = ''):Observable<User[]> {
     return this.http.get<User[]>(`${environment.baseUrlAPI}/`);
 
