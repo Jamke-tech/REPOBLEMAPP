@@ -6,6 +6,7 @@ import {
   getUser,
   getUsers,
   updateUser,
+  deleteUser,
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -29,7 +30,8 @@ router.route("/user")
 
 router.route("/user/:id")
     .put(updateUser)
-    .get(getUser);
+    .get(getUser)
+    .delete(deleteUser);
 
     router.route("/completeUser")
     .get(getUsers)
@@ -43,8 +45,6 @@ router.route("/getUser/:id")
 router.route('/offer')
     .post(createOffer)
     .delete(deleteOffer)
-
-
 
 
 

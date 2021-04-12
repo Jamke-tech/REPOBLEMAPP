@@ -74,6 +74,12 @@ export async function getUser(req: Request, res: Response): Promise<Response> {
   return res.json(user);
 }
 
+export async function deleteUser(req: Request, res: Response): Promise<Response> {
+  const user = await User.findByIdAndDelete(req.params.id);
+  return res.json({
+    message: "succesfully deleted user:" + user?.userName});
+}
+
 export async function updateUser(
   req: Request,
   res: Response
