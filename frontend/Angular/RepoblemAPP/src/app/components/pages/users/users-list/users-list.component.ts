@@ -25,6 +25,7 @@ export class UsersListComponent implements OnInit {
     private userSvc: AuthService,
     private route: ActivatedRoute,
     private router: Router
+   
   ) {
     // this.onUrlChanged();
   }
