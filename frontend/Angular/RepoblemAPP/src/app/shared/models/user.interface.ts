@@ -11,5 +11,6 @@ export interface User{
     birthDate: Date;
     savedOffers:Array<Offer>;
     social: string;
+    id: number;
 
 }

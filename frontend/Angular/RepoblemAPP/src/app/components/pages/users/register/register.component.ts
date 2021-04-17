@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, NgFor
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Offer } from 'src/app/shared/models/offer.interface';
-import { on } from 'node:events';
+//import { on } from 'node:events';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +12,9 @@ import { on } from 'node:events';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   /*registerForm: FormGroup;   //para los validators
   validation_messages: any; 
@@ -29,11 +32,11 @@ export class RegisterComponent implements OnInit {
   user: User;*/
 
 
-  constructor(
+  /*constructor(
     private router: Router,
     public auth: AuthService,
     private formBuilder: FormBuilder,
-    private user: User ={
+    private user: User = {
       profilePhoto: '',
       name: '',
       surname: '',
@@ -44,6 +47,7 @@ export class RegisterComponent implements OnInit {
       birthDate: new Date(),
       savedOffers:new Array(),
       social: '',
+      id: 0,
     },
   ) { 
 
