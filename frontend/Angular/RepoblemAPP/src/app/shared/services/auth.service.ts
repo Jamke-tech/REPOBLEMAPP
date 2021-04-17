@@ -37,7 +37,9 @@ export class AuthService {
     localStorage.setItem("accessToken", token);
   }
 
-
+  getDetails(id:number):Observable<User>{
+    return this.http.get<User>(`${environment.baseUrlAPI}/${id}`);  
+  }
 
   /*
   searchCharacters(query = ''):Observable<User[]> {
