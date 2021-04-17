@@ -22,9 +22,9 @@ export class AuthService {
   updateUser() {
     return this.http.post<User>(`${environment.baseUrlAPI}/`);
   }
-
-  deleteUser(){
-    return this.http.delete<User>(`${environment.baseUrlAPI}/`);
-  }
 */
+  deleteUserB(id:number){
+    return this.http.delete<User>(`${environment.baseUrlAPI}/${id}`);
+  }
+
 }
