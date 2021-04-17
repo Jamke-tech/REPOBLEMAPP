@@ -4,8 +4,8 @@ import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from '../../../shared/models/user.interface';
 
-
 @Component({
+<<<<<<< HEAD
     selector:'app-users',
     template:`
     <div class="dsc-card" *ngIf="user">
@@ -47,3 +47,44 @@ export class UsersComponent{
         
     }
 }
+=======
+  selector: 'app-users',
+  template: ` <div class="dsc-card" *ngIf="user">
+    <a [routerLink]="['/users-details']">
+      <div class="dsc-card__img">
+        <img [src]="user.profilePhoto" alt="" />
+      </div>
+      <div class="dsc-card__info">
+        <h2>{{ user.name }}</h2>
+        <p>Correu: {{ user.email }}</p>
+      </div>
+    </a>
+    <div>
+      <button
+        class="btn btn-danger btn-remove btn-sm"
+        style="margin-left: 2px;"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-trash-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+          />
+        </svg>
+      </button>
+      <button class="btn btn-primary btn-sm" style="margin-top: 2px;">
+        Edit
+      </button>
+    </div>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class UsersComponent {
+  @Input() user!: User;
+}
+>>>>>>> 877a680cd1785b13f67a7f04c7d6cb2f98ce517d

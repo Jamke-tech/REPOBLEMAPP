@@ -7,6 +7,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './components/pages/users/users.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
+import {FormsModule} from '@angular/forms'
 
 
 
@@ -21,7 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

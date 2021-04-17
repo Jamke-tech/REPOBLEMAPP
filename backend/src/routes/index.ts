@@ -2,9 +2,11 @@ import { createOffer, deleteOffer } from '../controllers/offer.controller';
 import { Router } from "express";
 import {
   createUser,
+  createCompleteUser,
   getUser,
   getUsers,
   updateUser,
+  deleteUser,
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -28,16 +30,21 @@ router.route("/user")
 
 router.route("/user/:id")
     .put(updateUser)
-    .get(getUser);
+    .get(getUser)
+    .delete(deleteUser);
 
+    router.route("/completeUser")
+    .get(getUsers)
+    .post(createCompleteUser);
+
+router.route("/getUser/:id")
+    .get(getUser);
 
 
 //RUTES PER LES OFERTES
 router.route('/offer')
     .post(createOffer)
     .delete(deleteOffer)
-
-
 
 
 
