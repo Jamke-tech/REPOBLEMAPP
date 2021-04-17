@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     public auth: AuthService,
     private formBuilder: FormBuilder,
-    private user: User ={
+    private user: User = {
       profilePhoto: '',
       name: '',
       surname: '',
@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
       birthDate: new Date(),
       savedOffers:new Array(),
       social: '',
+      id: 0,
     },
   ) { 
 

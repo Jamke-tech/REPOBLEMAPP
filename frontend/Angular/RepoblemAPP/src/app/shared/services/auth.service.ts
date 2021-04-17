@@ -33,7 +33,7 @@ export class AuthService {
     localStorage.setItem("currentUser", user_string);
   }
 
-  setToken(token: any): void {
+  /*setToken(token: any): void {
     localStorage.setItem("accessToken", token);
   }
 
@@ -52,7 +52,7 @@ export class AuthService {
   }
 */
   deleteUserB(id:number){
-    return this.http.delete<User>(`${environment.baseUrlAPI}/${id}`);
+    return this.http.delete<User>(`${environment.baseUrlAPI}/user/${id}`);
   }
 
 }

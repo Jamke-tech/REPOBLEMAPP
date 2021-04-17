@@ -42,6 +42,7 @@ export class UsersListComponent implements OnInit {
     savedOffers: [],
     social: 'pan',
     birthDate: new Date(),
+    id: Math.random(),
   };
 
   ngOnInit(): void {
