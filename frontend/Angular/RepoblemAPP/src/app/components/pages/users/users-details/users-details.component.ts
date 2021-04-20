@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,15 +13,19 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class UsersDetailsComponent implements OnInit {
 
-  user: Observable<User> | undefined;
-  constructor(private route: ActivatedRoute, private userSvc: AuthService) { }
+  usuario: any; // Observable<User> | undefined;
+  constructor(private route: ActivatedRoute, private userSvc: AuthService) { 
+  }
 
   ngOnInit(): void {
 
 
     this.route.params.pipe(take(1)).subscribe((params)=>{
         const id = params['id'];
-        this.user = this.userSvc.getDetails(id);
+       // const name = params['name']
+       this.userSvc.getDetails(id).subscribe(data => {this.usuario = data;}); 
+        console.log(id);
+        //console.log(this.usuario);
     });
 
   }

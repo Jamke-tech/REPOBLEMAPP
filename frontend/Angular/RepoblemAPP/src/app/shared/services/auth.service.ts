@@ -32,13 +32,12 @@ export class AuthService {
     let user_string = JSON.stringify(user);
     localStorage.setItem("currentUser", user_string);
   }
+  getDetails(id:number):Observable<User>{
+    return this.http.get<User>(`http://localhost:25000/api/getUser/${id}`);  
+  }
 
   /*setToken(token: any): void {
     localStorage.setItem("accessToken", token);
-  }
-
-  getDetails(id:number):Observable<User>{
-    return this.http.get<User>(`${environment.baseUrlAPI}/${id}`);  
   }
 
   /*
