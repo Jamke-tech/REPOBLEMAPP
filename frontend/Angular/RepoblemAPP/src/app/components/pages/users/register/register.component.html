@@ -1,18 +1,23 @@
 <div class="row justify-content-center">
   <div class="col-md-8 order-md-1">
     <h4 class="mb-3" style="margin-top: 30px;">Dades del nou usuari</h4>
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" novalidate [formGroup]="registro" > <!--(ngSubmit)="añadirUsuario()-->
+      
       <div class="row">
         <div class="col-md-6 mb-3">
+          <label for="profilePhoto">Foto de perfil</label>
+          <input #profilePhoto type="text" class="form-control" id="profilePhoto" placeholder="" value="">
+        </div>
+        <div class="col-md-6 mb-3">
           <label for="firstName">Nom</label>
-          <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+          <input #firstName type="text" class="form-control" id="firstName" placeholder="" value="" required>
           <div class="invalid-feedback">
             El nom es un camp obligatori.
           </div>
         </div>
         <div class="col-md-6 mb-3">
           <label for="lastName">Cognoms</label>
-          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+          <input #lastName type="text" class="form-control" id="lastName" placeholder="" value="" required>
           <div class="invalid-feedback">
             El cognom es un camp obligatori.
           </div>
@@ -23,7 +28,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <input #username type="text" class="form-control" id="username" placeholder="Username" required>
             <div class="invalid-feedback" style="width: 100%;">
               El nom d'usuari es un camp obligatori.
             </div>
@@ -31,28 +36,48 @@
         </div>
   
         <div class="mb-3">
-          <label for="address">Teléfon</label>
-          <input type="text" class="form-control" id="phone" placeholder="1234" required>
+          <label for="password">Contrasenya</label>
+          <input #password type="password" class="form-control" id="password" placeholder="1234">
+          <div class="invalid-feedback">
+            Introdueix una contrasenya valida si us plau.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Correu </label>
+          <input #email type="email" class="form-control" id="email" placeholder="EAmola@exemple.com">
+          <div class="invalid-feedback">
+            Introdueix un correu valid si us plau.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone">Teléfon</label>
+          <input #phone type="text" class="form-control" id="phone" placeholder="1234" required>
           <div class="invalid-feedback">
             Si us plau, introdueix el teu telefon movil.
           </div>
         </div>
-  
         <div class="row">
           <div class="col-md-5 mb-3">
-            <label for="country">Data de naixement</label>
-            <div>
-              <!--<mat-form-field appearance="fill">
+            <label for="birthDay">Data de naixement</label>
+            <input #birthDay type="date" class="form-control" id="birthDay" placeholder="28/12/0000" required>
+
+            <!--<div>
+              <mat-form-field appearance="fill">
                 <mat-label>Choose a date</mat-label>
                 <input matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>-->
+              </mat-form-field>
               
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
+      <div>
+        <button  class="btn-desa" (click)="addUsuario(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value,password.value,profilePhoto.value)">Afegeix usuari</button> 
+    </div>
     </form>
   </div>
 </div>

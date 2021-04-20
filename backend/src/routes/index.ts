@@ -7,6 +7,7 @@ import {
   getUsers,
   updateUser,
   deleteUser,
+  loginUser
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -28,12 +29,15 @@ router.route("/user")
     .get(getUsers)
     .post(createUser);
 
+router.route("/user/login")
+    .post(loginUser)
+
 router.route("/user/:id")
     .put(updateUser)
     .get(getUser)
     .delete(deleteUser);
 
-    router.route("/completeUser")
+router.route("/completeUser")
     .get(getUsers)
     .post(createCompleteUser);
 

@@ -12,6 +12,7 @@ import { UsersComponent } from '../users.component';
   imports: [
     CommonModule,
     UsersListRoutingModule,
+    
   ]
 })
 export class UsersListModule { }

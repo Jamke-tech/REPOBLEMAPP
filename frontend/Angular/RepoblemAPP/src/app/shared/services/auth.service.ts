@@ -10,6 +10,10 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  loginFunction(username:string, password:string){
+    return this.http.post<User>(`${environment.baseUrlAPI}/user/login`,{username,password});
+  }
+
   updateUser(id: string) {
     return this.http.put<User>(`${environment.baseUrlAPI}/user/${id}`, id);
   }
@@ -36,17 +40,18 @@ export class AuthService {
   /*setToken(token: any): void {
     localStorage.setItem("accessToken", token);
   }
+*/
 
 
-
-  /*
-  searchCharacters(query = ''):Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrlAPI}/`);
-
-  getDetails(id:number):Observable<User>{
-    return this.http.get<User>(`${environment.baseUrlAPI}/${id}`);  
+  
+  searchUsers(query = ''):Observable<User[]> {
+    return this.http.get<User[]>(`${environment.baseUrlAPI}/user`);
   }
-
+  
+  getDetails(id:number):Observable<User>{
+    return this.http.get<User>(`${environment.baseUrlAPI}/user/${id}`);  
+  }
+/*
   updateUser() {
     return this.http.post<User>(`${environment.baseUrlAPI}/`);
   }

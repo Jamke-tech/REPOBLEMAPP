@@ -19,6 +19,30 @@ export async function createUser (req: Request, res: Response): Promise<Response
     })
 }*/
 
+export async function loginUser(req:Request,res:Response):Promise<Response> {
+
+  const{ userName, password} = req.body;
+
+  const user = await User.find(userName,password);
+
+  if( user.admin == true){
+    return res.json({
+      message: "Administrador autentificat correctament",
+      admin: user.admin,
+    });
+  }
+
+  else{
+
+    return res.json({
+      message: "Autentificació erronea",
+      admin: user.admin
+    });
+
+  }
+}
+
+
 export async function createUser(
   req: Request,
   res: Response

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.interface';
 
 @Component({
   selector: 'app-users-modification',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersModificationComponent implements OnInit {
 
+  @Input() user!:User;
   constructor() { }
+
 
   ngOnInit(): void {
   }

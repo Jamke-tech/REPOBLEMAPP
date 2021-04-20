@@ -17,6 +17,7 @@ import { empty } from 'rxjs';
   styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
+  
   users: User[] = [];
   private query: string = '';
 
@@ -27,7 +28,7 @@ export class UsersListComponent implements OnInit {
     private router: Router
    
   ) {
-    // this.onUrlChanged();
+    this.onUrlChanged();
   }
 
   public user: User = {
@@ -46,16 +47,27 @@ export class UsersListComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    //this.getDataFromService()
+    this.getUsersByQuery()
   }
 
-  private updateUser(user: User): void {
-    this.userSvc.updateUser;
+  private onUrlChanged(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.users= [];
+        this.getUsersByQuery();
+      });
   }
 
-  /*private getDataFromService(): void {
+  private getUsersByQuery(): void {
+    this.route.queryParams.pipe(take(1)).subscribe((params) => { this.query = params['q'] ;
+      this.getDataFromService();
+    });
+  }
+
+  private getDataFromService(): void {
     this.userSvc
-      .searchCharacters(this.query)
+      .searchUsers(this.query)
       .pipe(take(1))
       .subscribe((res: any) => {
         if (res?.length) {
@@ -69,10 +81,4 @@ export class UsersListComponent implements OnInit {
   })
 }
 
-private deleteUser(): void{
-
-
-
-}
-*/
 }

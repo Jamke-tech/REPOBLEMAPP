@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -11,16 +11,16 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./users-details.component.css']
 })
 export class UsersDetailsComponent implements OnInit {
-
-  user: Observable<User> | undefined;
+  
+  user$: Observable <User> | undefined;
   constructor(private route: ActivatedRoute,private userSvc: AuthService) { }
 
   ngOnInit(): void {
 
-    /*this.route.params.pipe(take(1)).subscribe((params)=>{
+    this.route.params.pipe(take(1)).subscribe((params)=>{
         const id = params['id'];
-        this.user = this.userSvc.getDetails(id);
-    });*/
+        this.user$ = this.userSvc.getDetails(id);
+    });
 
   }
 

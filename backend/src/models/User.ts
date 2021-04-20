@@ -13,6 +13,7 @@ const schema = new Schema({
     birthDate: Date,
     savedOffers: [{type: SchemaMongo.ObjectId, ref: "Offer"}], //Las ofertas guardadas seran vector de Offers
     social: [{type: SchemaMongo.ObjectId, ref: "Chat"}], //Todas las conversaciones que tiene
+    admin: Boolean,
 
 });
 
@@ -27,6 +28,7 @@ interface IUser extends Document {
     birthDate: Date;
     savedOffers: Array<Types.ObjectId | Record<string, unknown>>;
     social: Array<Types.ObjectId | Record<string, unknown>>;
+    admin: boolean;
 
 };
 

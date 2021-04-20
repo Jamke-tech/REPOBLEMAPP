@@ -1,18 +1,24 @@
 <mat-card>
     <mat-card-title>LogIn</mat-card-title>
     <mat-card-content>
-        <form>
+        <form [formGroup]="loginForm"> <!--(ngSubmit)="onLogin()"-->
             <p>
                 <mat-form-field>
-                    <input type="text" manInput placeholder="Usuari" class="input-form"/>
+                    <input #username type="text" formControlName="username" manInput placeholder="Usuari" class="input-form" required/>
+                    <mat-error *ngIf="isValidField('username')">
+                        {{getErrorMsg("username")}}
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
-                    <input type="password" manInput placeholder="Contrasenya" class="input-form"/>
+                    <input #password type="password" formControlName="password" manInput placeholder="Contrasenya" class="input-form" required/>
+                    <mat-error *ngIf="isValidField('password')">
+                        {{getErrorMsg("password")}}
+                    </mat-error>
                 </mat-form-field>
             </p>
-            <button type="submit" mat-raised-button color="primary">LogIn</button>
+            <button type="submit" mat-raised-button color="primary" (click)="onLogin(username.value,password.value)">LogIn</button>
         </form>
     </mat-card-content>
 </mat-card>
