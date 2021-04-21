@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   loginFunction(username:string, password:string){
-    return this.http.post<User>(`${environment.baseUrlAPI}/user/login`,{username,password});
+    return this.http.post<User>(`${environment.baseUrlAPI}/admin/login`,{username,password});
   }
 
   updateUser(id: string) {

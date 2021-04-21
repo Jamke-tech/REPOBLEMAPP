@@ -1,13 +1,14 @@
 import { createOffer, deleteOffer } from '../controllers/offer.controller';
 import { Router } from "express";
 import {
-  createUser,
   createCompleteUser,
   getUser,
   getUsers,
   updateUser,
   deleteUser,
-  loginUser
+  loginUsers,
+  createADMIN,
+  loginADMIN
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -25,12 +26,17 @@ router.route('/')
 
 
 //RUTES DELS USUARIS
+router.route("/create/admin")
+    .post(createADMIN) //Para crear un administrador
+
 router.route("/user")
     .get(getUsers)
-    .post(createUser);
 
-router.route("/user/login")
-    .post(loginUser)
+router.route("/admin/login")
+    .post(loginADMIN)
+
+router.route("/users/login")
+    .post(loginUsers)
 
 router.route("/user/:id")
     .put(updateUser)
