@@ -30,7 +30,10 @@ router.route("/create/admin")
     .post(createADMIN) //Para crear un administrador
 
 router.route("/user")
-    .get(getUsers)
+    .post(createCompleteUser);
+
+router.route('/users')
+    .get(getUsers);
 
 router.route("/admin/login")
     .post(loginADMIN)
@@ -42,11 +45,7 @@ router.route("/user/:id")
     .put(updateUser)
     .get(getUser)
     .delete(deleteUser);
-
-router.route("/completeUser")
-    .get(getUsers)
-    .post(createCompleteUser);
-
+    
 router.route("/getUser/:id")
     .get(getUser);
 

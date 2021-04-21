@@ -1,4 +1,4 @@
-<div class="row justify-content-center" *ngIf="usuario | async as user">
+<div class="row justify-content-center" *ngIf="usuario  as user">
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3" style="margin-top: 30px;">Dades de l'usuari</h4>
       <div>
@@ -10,20 +10,20 @@
       </div>
       <form class="needs-validation" novalidate>
         <div>
-            <img [src]="usuario.profilePhoto"  alt="" style="width: 200px; height: 200px; ">
+            <img [src]="usuario?.profilePhoto"  alt="" style="width: 200px; height: 200px; ">
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">Nom</label>
             <div>
-                <label class="text-muted" id="firstNameData">{{ this.usuario.name }}</label>
+                <label class="text-muted" id="firstNameData">{{ this.usuario?.name }}</label>
             </div>
             
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Cognoms</label>
             <div>
-                <label class="text-muted" id="lastNameData">{{ this.usuario.surname }}</label>
+                <label class="text-muted" id="lastNameData">{{ this.usuario?.surname }}</label>
             </div>
           </div>
         </div>
@@ -31,21 +31,21 @@
         <div class="mb-3">
           <label for="username">Nom d'usuari</label>
           <div class="input-group">
-            <label class="text-muted" id="usernameData">{{ this.usuario.userName }}</label>
+            <label class="text-muted" id="usernameData">{{ this.usuario?.userName }}</label>
           </div>
         </div>
   
         <div class="mb-3">
           <label for="email">Correu</label>
           <div>
-              <label class="text-muted" id="emailData">{{ this.usuario.email }}</label>
+              <label class="text-muted" id="emailData">{{ this.usuario?.email }}</label>
           </div>
         </div>
   
         <div class="mb-3">
           <label for="phone"> Teléfon</label>
           <div>
-              <label class="text-muted" id="phoneData">{{ this.usuario.phone }}</label>
+              <label class="text-muted" id="phoneData">{{ this.usuario?.phone }}</label>
           </div>
         </div>
   
@@ -53,7 +53,7 @@
           <div class="col-md-5 mb-3">
             <label for="bithDay">Data de naixement</label>
             <div>
-              <label class="text-muted" id="birthDayData" input type="date">{{ this.usuario.birthDate | date}}</label>
+              <label class="text-muted" id="birthDayData" input type="date">{{ this.usuario?.birthDate | date}}</label>
             </div>
           </div>
         </div>

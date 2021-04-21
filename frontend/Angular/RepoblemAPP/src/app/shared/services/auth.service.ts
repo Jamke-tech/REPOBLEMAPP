@@ -10,16 +10,16 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  loginFunction(username:string, password:string){
-    return this.http.post<User>(`${environment.baseUrlAPI}/admin/login`,{username,password});
+  loginFunction(userName:string, password:string): Observable<any>{
+    return this.http.post(`${environment.baseUrlAPI}/admin/login`,{userName,password});
   }
 
   updateUser(id: string) {
     return this.http.put<User>(`${environment.baseUrlAPI}/user/${id}`, id);
   }
 
-  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,profilePhoto: string,birthDate: Date) {
-    return this.http.post<User>(`${environment.baseUrlAPI}/completeUser`,
+  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,profilePhoto: string,birthDate: Date):Observable<any> {
+    return this.http.post(`${environment.baseUrlAPI}/user`,
         {
           userName: userName,
           name: name,
@@ -36,19 +36,17 @@ export class AuthService {
     let user_string = JSON.stringify(user);
     localStorage.setItem("currentUser", user_string);
   }
-  getDetails(id:number):Observable<User>{
-    return this.http.get<User>(`http://localhost:25000/api/getUser/${id}`);  
+  getDetails(id:number):Observable<any>{
+    return this.http.get(`${environment.baseUrlAPI}/getUser/${id}`);  
   }
 
   /*setToken(token: any): void {
     localStorage.setItem("accessToken", token);
   }
 */
-
-
   
-  searchUsers(query = ''):Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrlAPI}/user`);
+  searchUsers(query = ''):Observable<any> {
+    return this.http.get(`${environment.baseUrlAPI}/users`);
   }
   
   /*

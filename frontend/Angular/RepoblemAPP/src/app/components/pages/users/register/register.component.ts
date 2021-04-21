@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Offer } from 'src/app/shared/models/offer.interface';
 import { Observable } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 //import { on } from 'node:events';
 
 @Component({
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor (private fb:FormBuilder){}
+  constructor (private fb:FormBuilder,private authSvc:AuthService,private router:Router){}
 
   registro = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
@@ -45,9 +46,25 @@ export class RegisterComponent implements OnInit {
     if(this.registro.valid){
 
       let user: User;
-      user = {name: firstNameValue, surname: lastNameValue, userName: usernameValue, phone:phoneValue, birthDate: new Date(birthDayValue), id:0,email:emailValue,social:"",savedOffers: [], password:passwordValue, profilePhoto:profilePhotoValue};
+      this.authSvc.registerUser(usernameValue, firstNameValue, lastNameValue,passwordValue,emailValue , phoneValue, profilePhotoValue,new Date(birthDayValue))
+      .pipe(take(1)).subscribe((res: any) =>{
+        //Miramos que respuesta nos envia 
+        if(res.code = "200"){
+          //si es correcte tornarem a la pagina de tots els usauris
+          this.router.navigate(['/users-list']);
+        }
+        else{
+          alert("Usuario no creado correctamente")
+        }
+
+
+
+
+      });
       
+
     }
+
     else{
       
     }

@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
     this.onUrlChanged();
   }
 
-  public user: User = {
+  /*public user: User = {
     name: 'TOni Oller',
     userName: 'pepito',
     profilePhoto:
@@ -43,11 +43,12 @@ export class UsersListComponent implements OnInit {
     savedOffers: [],
     social: 'pan',
     birthDate: new Date(),
-    id: Math.random(),
-  };
+    id: '',
+  };*/
 
   ngOnInit(): void {
-    this.getUsersByQuery()
+    //this.getUsersByQuery()
+    this.getDataFromService();
   }
 
   private onUrlChanged(): void {
@@ -67,12 +68,12 @@ export class UsersListComponent implements OnInit {
 
   private getDataFromService(): void {
     this.userSvc
-      .searchUsers(this.query)
-      .pipe(take(1))
-      .subscribe((res: any) => {
-        if (res?.length) {
+      .searchUsers(this.query).pipe(take(1)).subscribe((res: any) => {
+
+        if (res.code == "200") {
+          //console.log(res.usersList)
     
-          this.users = [...this.users,...res];
+          this.users = res.usersList;
           
         } else {
           this.users = [];

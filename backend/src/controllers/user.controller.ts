@@ -31,8 +31,9 @@ export async function loginADMIN (req:Request,res:Response):Promise<Response> {
 
   //Hem de comprovar que la contrasenya sigui la mateixa que ens entren 
   //ACHTUNG !! Quan tenim un fid ens retorna un vector
+  
     
-    if(user[0].password == password && user[0].role=="ADMIN")
+    if(user[0].password == password && user[0].role == "ADMIN")
     {
       //Contrasenya correcta 
       return res.json({

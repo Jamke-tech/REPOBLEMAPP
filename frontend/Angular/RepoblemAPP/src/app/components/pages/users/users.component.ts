@@ -8,12 +8,12 @@ import { User } from '../../../shared/models/user.interface';
     selector:'app-users',
     template:`
     <div class="dsc-card" *ngIf="user">
-        <a [routerLink]="['/users-details', user.id]">
+        <a [routerLink]="['/users-details', user._id]">
             <div class="dsc-card__img">
                 <img [src]="user.profilePhoto" alt="">
             </div>
             <div class="dsc-card__info">
-                <h2>{{ user.name }}</h2>
+                <h2>{{ user.userName }}</h2>
                 <p>Correu: {{ user.email }}</p>
             </div>
         </a>

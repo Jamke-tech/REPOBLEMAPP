@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class UsersDetailsComponent implements OnInit {
 
-  usuario: any; // Observable<User> | undefined;
+  usuario: any ;//Observable<User> | undefined;
   constructor(private route: ActivatedRoute, private userSvc: AuthService) { 
   }
 
@@ -23,9 +23,25 @@ export class UsersDetailsComponent implements OnInit {
     this.route.params.pipe(take(1)).subscribe((params)=>{
         const id = params['id'];
        // const name = params['name']
-       this.userSvc.getDetails(id).subscribe(data => {this.usuario = data;}); 
-        console.log(id);
-        //console.log(this.usuario);
+       this.userSvc.getDetails(id).subscribe(data => {
+
+
+        if(data.code = "200"){
+          //tenim resposat correcta
+          console.log(data.user)
+          this.usuario = data.user;
+          console.log(this.usuario);
+
+        }
+        else{
+          console.log("Error: Dades d'usuario incorrecte")
+
+        }
+         
+        
+        
+        }); 
+        
     });
 
   }
