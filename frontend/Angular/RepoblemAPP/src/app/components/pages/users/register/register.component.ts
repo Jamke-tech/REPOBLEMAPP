@@ -13,7 +13,14 @@ import { filter, take } from 'rxjs/operators';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+  
 export class RegisterComponent implements OnInit {
+
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
 
   constructor (private fb:FormBuilder,private authSvc:AuthService,private router:Router){}
 
@@ -28,17 +35,21 @@ export class RegisterComponent implements OnInit {
 
   })
   ngOnInit(): void {
-    
-    this.registro = this.fb.group({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      username: new FormControl(''),
-      phone: new FormControl(''),
-      birthDay: new FormControl(''),
-      email:new FormControl(''),
-      password: new FormControl('')
-    })
-    throw new Error('Method not implemented.');
+    try{
+      this.registro = this.fb.group({
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        username: new FormControl(''),
+        phone: new FormControl(''),
+        birthDay: new FormControl(''),
+        email:new FormControl(''),
+        password: new FormControl('')
+      })
+    }
+    catch{
+      throw new Error('Method not implemented.');
+    }
+
   }
 
   addUsuario(firstNameValue:string, lastNameValue:string, usernameValue:string, phoneValue:string, birthDayValue:string, emailValue:string, passwordValue:string, profilePhotoValue:string):void {

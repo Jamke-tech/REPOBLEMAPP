@@ -14,8 +14,17 @@ export class AuthService {
     return this.http.post(`${environment.baseUrlAPI}/admin/login`,{userName,password});
   }
 
-  updateUser(id: string) {
-    return this.http.put<User>(`${environment.baseUrlAPI}/user/${id}`, id);
+  updateUser(id: string,userName: string, name: string,surname: string, email: string, phone: string,birthDate: Date): Observable<any> {
+    return this.http.put(`${environment.baseUrlAPI}/user/${id}`, 
+    
+    {
+      userName: userName,
+      name: name,
+      surname: surname,
+      email: email,
+      phone: phone,
+      birthDate: birthDate
+    });
   }
 
   registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,profilePhoto: string,birthDate: Date):Observable<any> {
