@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
   onLogin(usernameValue:string, passwordValue:string):void{
 
     this.authSvc.loginFunction(usernameValue,passwordValue).subscribe(data => {
-      if(data){
-
+      if(data.code == "200"){
+        this.router.navigate(['/users-list'])
       }
       else{
-
+          console.log('No autorizados, sorry')
       }
     })
 
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
       
     }
     else{
-      
+
     }
   }*/
   

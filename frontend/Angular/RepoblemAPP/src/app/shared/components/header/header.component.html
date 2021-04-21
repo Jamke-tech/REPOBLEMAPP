@@ -27,8 +27,13 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" routerLink="/users-list">Inici</a>
             </li>
+            <ng-template #fhowLogin>
             <li class="nav-item">
               <a class="nav-link" routerLink="/login">LogIn</a>
+            </li>
+          </ng-template>
+            <li class="nav-item"> <!-- *ngIf="authSvc.adminData | async; else showLogin" (click)="onLogout()"-->
+              <a class="nav-link">LogOut</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
