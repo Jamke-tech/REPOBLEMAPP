@@ -70,8 +70,8 @@ export class AuthService {
     return this.http.post<User>(`${environment.baseUrlAPI}/`);
   }
 */
-  deleteUserB(id:number){
-    return this.http.delete<User>(`${environment.baseUrlAPI}/user/${id}`);
+  deleteUserB(id:string):Observable<any>{
+    return this.http.delete(`${environment.baseUrlAPI}/user/${id}`);
   }
 
 }

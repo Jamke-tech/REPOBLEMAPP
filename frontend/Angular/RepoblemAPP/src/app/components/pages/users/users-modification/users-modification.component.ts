@@ -55,7 +55,7 @@ updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, p
         //si es correcte tornarem a la pagina de tots els usauris
         
 
-        this.router.navigate(['/users-details/',id]);
+        this.router.navigate(['/users-details',id]);
       }
       else{
         alert("Usuario no creado correctamente")

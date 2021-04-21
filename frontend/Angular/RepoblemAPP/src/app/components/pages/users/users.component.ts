@@ -32,17 +32,23 @@ export class UsersComponent{
     @Input() user!:User;
     constructor(private route: ActivatedRoute, private authSvc:AuthService){}
 
-    private id:number | undefined;
-
     deleteUser():void{
 
-        this.route.params.pipe(take(1)).subscribe((params)=>{
-            const id = params['id'];
-            this.authSvc.deleteUserB(id);
-        },
-            error => {
-            console.log('error');
+        this.authSvc.deleteUserB(this.user._id).pipe(take(1)).subscribe(res => {
+
+            if(res.code == "200"){
+
+                console.log('Usuari eliminat amb exit')
+
+            }
+
+            else{
+
+                console.log('No s´ha pogut eliminar l´usuari')
+            }
+
         });
+        
         
     }
 }
