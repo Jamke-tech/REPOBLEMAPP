@@ -48,7 +48,7 @@ updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, p
       const id = params['id'];
 
     //enviem les dades al servei de l'usuari
-    this.authSvc.updateUser(id,usernameValue, firstNameValue, lastNameValue, emailValue , phoneValue,new Date(birthDayValue)).subscribe(res => {
+    this.authSvc.updateUser(id,usernameValue, firstNameValue, lastNameValue, emailValue , this.usuario.profilePhoto, phoneValue,new Date(birthDayValue)).subscribe(res => {
 
       //Comprovem la resposta que ens dona de la bbdd
       if(res.code = "200"){

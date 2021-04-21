@@ -14,7 +14,7 @@ export class AuthService {
     return this.http.post(`${environment.baseUrlAPI}/admin/login`,{userName,password});
   }
 
-  updateUser(id: string,userName: string, name: string,surname: string, email: string, phone: string,birthDate: Date): Observable<any> {
+  updateUser(id: string,userName: string, name: string,surname: string, email: string, profilePhoto:string, phone: string,birthDate: Date): Observable<any> {
     return this.http.put(`${environment.baseUrlAPI}/user/${id}`, 
     
     {
@@ -22,6 +22,7 @@ export class AuthService {
       name: name,
       surname: surname,
       email: email,
+      profilePhoto: profilePhoto,
       phone: phone,
       birthDate: birthDate
     });
@@ -45,7 +46,7 @@ export class AuthService {
     let user_string = JSON.stringify(user);
     localStorage.setItem("currentUser", user_string);
   }
-  getDetails(id:number):Observable<any>{
+  getDetails(id:string):Observable<any>{
     return this.http.get(`${environment.baseUrlAPI}/getUser/${id}`);  
   }
 
