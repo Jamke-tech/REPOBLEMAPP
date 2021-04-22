@@ -30,7 +30,7 @@ router.route("/create/admin")
     .post(createADMIN) //Para crear un administrador
 
 router.route("/user")
-    .post(createCompleteUser);
+    .post(multer.single('image'),createCompleteUser);
 
 router.route('/users')
     .get(getUsers);

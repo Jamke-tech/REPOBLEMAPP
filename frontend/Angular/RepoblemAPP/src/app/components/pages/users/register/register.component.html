@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="profilePhoto">Foto de perfil</label>
-          <input #profilePhoto type="text" class="form-control" id="profilePhoto" placeholder="" value="">
+          <input  type="file" #profilePhoto class="form-control" id="profilePhoto"  placeholder="" value="" accept="image/*" (change)="selectFile($event)">
         </div>
         <div class="col-md-6 mb-3">
           <label for="firstName">Nom</label>
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div>
-        <button  class="btn-desa" (click)="addUsuario(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value,password.value,profilePhoto.value)">Afegeix usuari</button> 
+        <button  class="btn-desa" (click)="addUsuario(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value,password.value)">Afegeix usuari</button> 
     </div>
     </form>
   </div>

@@ -75,4 +75,10 @@ updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, p
   });
     
  } 
+selectFile(event:any){
+  //Funció per posar la fotografía diferent i guardar la foto i enviarla
+
+
+
+}
 }

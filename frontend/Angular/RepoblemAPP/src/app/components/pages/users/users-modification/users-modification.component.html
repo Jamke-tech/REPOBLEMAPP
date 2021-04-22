@@ -4,6 +4,7 @@
       <form class="needs-validation" novalidate>
         <div>
             <img src="{{this.usuario?.profilePhoto}}" alt="" style="width: 200px; height: 200px; ">
+            <input  type="file" #profilePhoto class="form-control" id="profilePhoto"  placeholder="" value="" accept="image/*" (change)="selectFile($event)">
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">

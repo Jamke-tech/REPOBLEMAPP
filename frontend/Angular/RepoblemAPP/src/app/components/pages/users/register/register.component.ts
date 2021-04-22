@@ -22,6 +22,10 @@ export class RegisterComponent implements OnInit {
     end: new FormControl()
   });
 
+  public photoFile:any | undefined;
+
+
+
   constructor (private fb:FormBuilder,private authSvc:AuthService,private router:Router){}
 
   registro = new FormGroup({
@@ -32,8 +36,13 @@ export class RegisterComponent implements OnInit {
     birthDay: new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',[Validators.required]),
+    profilePhoto: new FormControl(null,[Validators.required]),
+    file : new FormControl ('',[Validators.required])
 
   })
+  
+
+
   ngOnInit(): void {
     try{
       this.registro = this.fb.group({
@@ -43,7 +52,8 @@ export class RegisterComponent implements OnInit {
         phone: new FormControl(''),
         birthDay: new FormControl(''),
         email:new FormControl(''),
-        password: new FormControl('')
+        password: new FormControl(''),
+        profilePhoto: new FormControl(null)
       })
     }
     catch{
@@ -52,12 +62,16 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  addUsuario(firstNameValue:string, lastNameValue:string, usernameValue:string, phoneValue:string, birthDayValue:string, emailValue:string, passwordValue:string, profilePhotoValue:string):void {
+  addUsuario(firstNameValue:string, lastNameValue:string, usernameValue:string, phoneValue:string, birthDayValue:string, emailValue:string, passwordValue:string):void {
 
     if(this.registro.valid){
 
+
+      //const fileUpload: this.fileUpload.nativeElement;
+
+
       let user: User;
-      this.authSvc.registerUser(usernameValue, firstNameValue, lastNameValue,passwordValue,emailValue , phoneValue, profilePhotoValue,new Date(birthDayValue))
+      this.authSvc.registerUser(usernameValue, firstNameValue, lastNameValue,passwordValue,emailValue , phoneValue,new Date(birthDayValue),this.photoFile)
       .pipe(take(1)).subscribe((res: any) =>{
         //Miramos que respuesta nos envia 
         if(res.code = "200"){
@@ -67,10 +81,6 @@ export class RegisterComponent implements OnInit {
         else{
           alert("Usuario no creado correctamente")
         }
-
-
-
-
       });
       
 
@@ -81,6 +91,13 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+  selectFile(event:any):void{
+    this.photoFile=event.target.files.item(0);
+    console.log("Photo Changed ")
+  }
+  
+
+
 
   /*registerForm: FormGroup;   //para los validators
   validation_messages: any; 

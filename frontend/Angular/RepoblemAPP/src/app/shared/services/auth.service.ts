@@ -28,18 +28,19 @@ export class AuthService {
     });
   }
 
-  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,profilePhoto: string,birthDate: Date):Observable<any> {
-    return this.http.post(`${environment.baseUrlAPI}/user`,
-        {
-          userName: userName,
-          name: name,
-          surname: surname,
-          password: password,
-          email: email,
-          phone: phone,
-          profilePhoto: profilePhoto,
-          birthDate: birthDate
-        });
+  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,birthDate: Date, photoFile: any):Observable<any> {
+    
+    var formData: any = new FormData();
+    formData.append("image", photoFile);
+    formData.append("userName",userName);
+    formData.append("name",name);
+    formData.append("surname",surname);
+    formData.append("password",password);
+    formData.append("email",email);
+    formData.append("phone",phone);
+    formData.append("birthDate",birthDate);
+
+    return this.http.post(`${environment.baseUrlAPI}/user`, formData);
   }
 
   setUser(user: User): void {

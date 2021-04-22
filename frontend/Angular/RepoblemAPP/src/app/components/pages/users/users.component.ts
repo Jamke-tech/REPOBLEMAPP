@@ -10,7 +10,7 @@ import { User } from '../../../shared/models/user.interface';
     <div class="dsc-card" *ngIf="user">
         <a [routerLink]="['/users-details', user._id]">
             <div class="dsc-card__img">
-                <img [src]="user.profilePhoto" alt="">
+                <img src="{{user.profilePhoto}}" alt="">
             </div>
             <div class="dsc-card__info">
                 <h2>{{ user.userName }}</h2>
@@ -36,7 +36,8 @@ export class UsersComponent{
 
         this.authSvc.deleteUserB(this.user._id).pipe(take(1)).subscribe(res => {
             if(res.code == "200"){
-                this.router.navigate(['/users-list']);
+                //this.router.navigate(['/users-list']);
+                window.location.reload();
                 console.log('Usuari eliminat amb exit')
 
             }

@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/User";
+import path from 'path';
+import fs from 'fs-extra';
 
 /* ---- EXEMPLE DE FUNCIÓ ---
 export async function createUser (req: Request, res: Response): Promise<Response> {
@@ -137,7 +139,7 @@ catch{
 }
 
 export async function createCompleteUser( req: Request,  res: Response ): Promise<Response> {
-  const { userName, name, surname, password, email, phone, profilePhoto, birthDate } = req.body;
+  const { userName, name, surname, password, email, phone, birthDate } = req.body;
 
   const newUser = {
     userName: userName,
@@ -146,7 +148,7 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
     password: password,
     email: email,
     phone: phone,
-    profilePhoto: profilePhoto,
+    profilePhoto: "assets/"+req.file.filename,
     birthDate: birthDate,
     role: "USER"
   };
@@ -211,13 +213,30 @@ export async function getUser(req: Request, res: Response): Promise<Response> {
 
 export async function deleteUser(req: Request, res: Response): Promise<Response> {
   try{
-  const user = await User.findByIdAndDelete(req.params.id);
-  return res.json({
-    code: '200',
-    message: "succesfully deleted user:" + user?.userName,
-    id: user?.id});
+  //Borramos el usuario 
+    const user = await User.findByIdAndDelete(req.params.id);
+  //Borramos la fotografia
+  if(user){
+    await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ user.profilePhoto))//eliminamos la fotografia del servidor
+    
+    return res.json({
+      code: '200',
+      message: "succesfully deleted user:" + user?.userName,
+      id: user?.id});
+    }
+  else{
+    return res.json({
+      code: '404',
+      message: "User not found",
+      });
+    }
+
   }
-  catch{
+
+
+  
+  catch (e){
+    console.log(e);
     return res.json({
       code: '500',
       message: "Server Down or errorn on BBDD",
