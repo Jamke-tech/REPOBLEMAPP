@@ -156,6 +156,8 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
   const user = new User(newUser); // creem l'objecte de MongoDB
   await user.save(); //guardem la foto amb mongoose
 
+
+
   return res.json({
     code: '200',
     message: "User correctly uploaded",
@@ -173,13 +175,14 @@ catch{
 
 export async function getUsers(req: Request, res: Response): Promise<Response> {
   try{
-  const Users = await User.find();
-  return res.json({
-    code: '200',
-    message: 'List of Users',
-    usersList: Users
-  }
-    );
+    const Users = await User.find();
+    
+    return res.json({
+      code: '200',
+      message: 'List of Users',
+      usersList: Users
+    }
+      );
   }
   catch{
     return res.json({
@@ -196,6 +199,8 @@ export async function getUsers(req: Request, res: Response): Promise<Response> {
 export async function getUser(req: Request, res: Response): Promise<Response> {
   try{
   const user = await User.findById(req.params.id);
+  
+  
   return res.json({
     code: '200',
     message: 'User Found',

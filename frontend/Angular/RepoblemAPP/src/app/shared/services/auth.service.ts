@@ -48,7 +48,7 @@ export class AuthService {
     localStorage.setItem("currentUser", user_string);
   }
   getDetails(id:string):Observable<any>{
-    return this.http.get(`${environment.baseUrlAPI}/getUser/${id}`);  
+    return this.http.get(`${environment.baseUrlAPI}/user/${id}`);  
   }
 
   /*setToken(token: any): void {

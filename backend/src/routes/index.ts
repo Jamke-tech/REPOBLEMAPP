@@ -46,9 +46,6 @@ router.route("/user/:id")
     .get(getUser)
     .delete(deleteUser);
     
-router.route("/getUser/:id")
-    .get(getUser);
-
 
 //RUTES PER LES OFERTES
 router.route('/offer')
