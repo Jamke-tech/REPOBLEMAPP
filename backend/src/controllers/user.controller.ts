@@ -152,18 +152,44 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
     birthDate: birthDate,
     role: "USER"
   };
+  console.log(newUser);
   try{
-  const user = new User(newUser); // creem l'objecte de MongoDB
-  await user.save(); //guardem la foto amb mongoose
+    var errorSave : Boolean = false;
+    const user = new User(newUser); // creem l'objecte de MongoDB
+    await user.save(function(err){
+      console.log(err);
+      if(err){
+        errorSave = true;      
+      }
+      else{
+        errorSave=false
+      }
+    }
+    ); //guardem la foto amb mongoose
+
+    
+
+    if(errorSave){
+      return res.json({
+        code: '403',
+        message: "Error en dades d'usuari"
+      });
 
 
+    }
+    else{
+      //Eliminem la fotografia
+      await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ user.profilePhoto))
+      return res.json({
+        code: '200',
+        message: "User correctly uploaded",
+        id: user.id
+      });
+      
 
-  return res.json({
-    code: '200',
-    message: "User correctly uploaded",
-    id: user.id
-  });
-}
+    }
+  }
+
 catch{
   return res.json({
     code: '505',
@@ -172,6 +198,7 @@ catch{
 
 }
 }
+
 
 export async function getUsers(req: Request, res: Response): Promise<Response> {
   try{

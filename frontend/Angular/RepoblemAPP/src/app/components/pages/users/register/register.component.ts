@@ -78,6 +78,9 @@ export class RegisterComponent implements OnInit {
           //si es correcte tornarem a la pagina de tots els usauris
           this.router.navigate(['/users-list']);
         }
+        else if(res.code="403"){
+          alert("Error en les dades: Correu existen o Usuari repetit")
+        }
         else{
           alert("Usuario no creado correctamente")
         }

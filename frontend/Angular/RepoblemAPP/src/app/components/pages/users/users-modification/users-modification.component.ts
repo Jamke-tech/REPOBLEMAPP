@@ -60,25 +60,12 @@ updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, p
       else{
         alert("Usuario no creado correctamente")
       }
-
-
-
-
     });
-
-
-
-
-
-
-
   });
     
  } 
 selectFile(event:any){
   //Funció per posar la fotografía diferent i guardar la foto i enviarla
-
-
 
 }
 }
