@@ -3,6 +3,7 @@ import { User } from '../models/user.interface';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
     return this.http.post(`${environment.baseUrlAPI}/admin/login`,{userName,password});
   }
 
-  updateUser(id: string,userName: string, name: string,surname: string, email: string, profilePhoto:string, phone: string,birthDate: Date): Observable<any> {
+  updateUser(id: string,userName: string, name: string,surname: string, email: string, profilePhoto:string, phone: string,birthDate: Date,password:string): Observable<any> {
     return this.http.put(`${environment.baseUrlAPI}/user/${id}`, 
     
     {
@@ -22,6 +23,7 @@ export class AuthService {
       name: name,
       surname: surname,
       email: email,
+      password: password,
       profilePhoto: profilePhoto,
       phone: phone,
       birthDate: birthDate

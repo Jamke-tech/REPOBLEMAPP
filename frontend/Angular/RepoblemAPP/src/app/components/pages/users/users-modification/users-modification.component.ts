@@ -42,13 +42,13 @@ export class UsersModificationComponent implements OnInit {
   });
   }
 
-updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, phoneValue:string, birthDayValue:string, emailValue:string) {
+updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, phoneValue:string, birthDayValue:string, emailValue:string, passwordValue:string) {
     //Recuperem els id del path params
     this.route.params.pipe(take(1)).subscribe((params)=>{
       const id = params['id'];
 
     //enviem les dades al servei de l'usuari
-    this.authSvc.updateUser(id,usernameValue, firstNameValue, lastNameValue, emailValue , this.usuario.profilePhoto, phoneValue,new Date(birthDayValue)).subscribe(res => {
+    this.authSvc.updateUser(id,usernameValue, firstNameValue, lastNameValue, emailValue , this.usuario.profilePhoto, phoneValue,new Date(birthDayValue),passwordValue).subscribe(res => {
 
       //Comprovem la resposta que ens dona de la bbdd
       if(res.code = "200"){

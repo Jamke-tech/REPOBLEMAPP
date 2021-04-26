@@ -10,6 +10,7 @@ import {
 } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
 import { empty } from 'rxjs';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-users-list',
@@ -19,6 +20,7 @@ import { empty } from 'rxjs';
 export class UsersListComponent implements OnInit {
   
   users: User[] = [];
+  ids : string[] = [];
   private query: string = '';
 
   constructor(
@@ -80,6 +82,14 @@ export class UsersListComponent implements OnInit {
         }
       
   })
+}
+
+deleteUsers():void{
+
+  /*if (selected.value == true){
+    this.ids.concat()
+  }*/
+
 }
 
 }

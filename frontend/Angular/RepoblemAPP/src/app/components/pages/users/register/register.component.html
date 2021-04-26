@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-md-8 order-md-1">
-    <h4 class="mb-3" style="margin-top: 30px;">Dades del nou usuari</h4>
+    <h4 class="mb-3" style="margin-top: 30px; font-size: 30px;">Dades del nou usuari : </h4>
     <form class="needs-validation" novalidate [formGroup]="registro" > <!--(ngSubmit)="añadirUsuario()-->
       
       <div class="row">
@@ -22,7 +22,7 @@
             El cognom es un camp obligatori.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-3" style="margin-left: 15px;">
           <label for="username">Nom d'usuari</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -35,7 +35,7 @@
           </div>
         </div>
   
-        <div class="mb-3">
+        <div class="mb-3" style="margin-left: 16px;">
           <label for="password">Contrasenya</label>
           <input #password type="password" class="form-control" id="password" placeholder="1234">
           <div class="invalid-feedback">
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" style="margin-left: 10px;">
           <label for="email">Correu </label>
           <input #email type="email" class="form-control" id="email" placeholder="EAmola@exemple.com">
           <div class="invalid-feedback">
@@ -51,7 +51,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" style="margin-left: 10px;">
           <label for="phone">Teléfon</label>
           <input #phone type="text" class="form-control" id="phone" placeholder="1234" required>
           <div class="invalid-feedback">
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-5 mb-3">
+          <div class="col-md-5 mb-3" style="margin-left: 16px;">
             <label for="birthDay">Data de naixement</label>
             <!--input #birthDay type="date" class="form-control" id="birthDay" placeholder="28/12/0000" required-->
 
@@ -74,7 +74,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div >
         <button  class="btn-desa" (click)="addUsuario(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value,password.value)">Afegeix usuari</button> 
     </div>
     </form>

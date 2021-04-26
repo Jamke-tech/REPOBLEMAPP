@@ -1,3 +1,4 @@
+import { NumberFormatStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service'
 
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  mostrarPes :boolean = false;
   onLogout():void{
     //this.authSvc.
   }
