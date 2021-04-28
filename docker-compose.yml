@@ -30,6 +30,6 @@ services:
         - backendNetwork
 
 networks:
-  frontend:
+  frontendNetwork:
 
-  backend:
+  backendNetwork:
