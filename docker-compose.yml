@@ -32,7 +32,7 @@ services:
 
   app:
     build: 
-        context: app
+        context: .
         dockerfile: Dockerfile
 
 networks:
