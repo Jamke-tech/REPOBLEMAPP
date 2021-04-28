@@ -28,3 +28,8 @@ services:
         - './data:/data/db'
     networks:
         - backendNetwork
+
+networks:
+  frontend:
+
+  backend:
