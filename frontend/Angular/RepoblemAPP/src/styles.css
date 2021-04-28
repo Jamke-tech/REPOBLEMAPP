@@ -117,3 +117,10 @@ p{
   transform: scale(1.05);
   cursor: pointer;
 }
+.no-hidden{
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  visibility: visible;
+  border-radius: 5px;
+}

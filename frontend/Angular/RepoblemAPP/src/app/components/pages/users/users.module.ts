@@ -7,6 +7,8 @@ import { UsersDetailsComponent } from '../users/users-details/users-details.comp
 import { UsersComponent } from '../users/users.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MaterialModule } from 'src/app/material.module';
+import { FormsModule } from '@angular/forms';
 
 const myComponents = [
   UsersDetailsComponent,
@@ -16,7 +18,7 @@ const myComponents = [
 
 @NgModule({
   declarations: [...myComponents],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MaterialModule,FormsModule],
   exports: [...myComponents],
 })
 export class UsersModule {}

@@ -1,6 +1,6 @@
 <div class="row justify-content-center" *ngIf="usuario  as user">
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3" style="margin-top: 30px;">Dades de l'usuari</h4>
+      <h4 class="mb-3" style="margin-top: 30px; font-size: 30px;">Dades de l'usuari :</h4>
       <form class="needs-validation" novalidate>
         <div>
             <img src="{{this.usuario?.profilePhoto}}" alt="" style="width: 200px; height: 200px; ">
@@ -35,6 +35,14 @@
             </div>
           </div>
         </div>
+
+        <div class="mb-3">
+          <label for="password">Contrasenya</label>
+          <input #password type="password" class="form-control" id="password" value="{{this.usuario?.password}}">
+          <div class="invalid-feedback">
+            Introdueix una contrasenya valida si us plau.
+          </div>
+        </div>
   
         <div class="mb-3">
           <label for="email">Correu </label>
@@ -51,7 +59,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="birthDay"> Data de Naixement </label>
+          <label for="birthDay" style="margin-right: 5px;"> Data de Naixement: </label>
           <mat-form-field appearance="fill">
             <mat-label>{{this.usuario?.birthDate | date}}</mat-label>
             <input #birthDay matInput [matDatepicker]="picker" value="{{this.usuario?.birthDate}}">
@@ -66,7 +74,7 @@
    
         
         <div>
-            <button  class="btn-desa" (click)="updateUser(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value)">Desa els canvis</button> 
+            <button  class="btn-desa" (click)="updateUser(firstName.value,lastName.value,username.value,phone.value,birthDay.value,email.value,password.value)">Desa els canvis</button> 
         </div>
       </form>
     </div>
