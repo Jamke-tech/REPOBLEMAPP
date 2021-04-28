@@ -1,11 +1,6 @@
 version: '3'
 
-app:
-    build: 
-      context: app
-      dockerfile: Dockerfile
 
-      
 services: 
   backend:
     build: ./backend
@@ -34,6 +29,11 @@ services:
         - './data:/data/db'
     networks:
         - backendNetwork
+
+  app:
+    build: 
+        context: app
+        dockerfile: Dockerfile
 
 networks:
   frontendNetwork:
