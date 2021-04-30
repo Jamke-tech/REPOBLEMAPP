@@ -24,6 +24,7 @@ export class UsersModificationComponent implements OnInit {
       const id = params['id'];
      // const name = params['name']
      this.authSvc.getDetails(id).subscribe(data => {
+       
 
 
       if(data.code = "200"){
@@ -49,36 +50,24 @@ updateUser (firstNameValue:string, lastNameValue:string, usernameValue:string, p
 
     //enviem les dades al servei de l'usuari
     this.authSvc.updateUser(id,usernameValue, firstNameValue, lastNameValue, emailValue , this.usuario.profilePhoto, phoneValue,new Date(birthDayValue),passwordValue).subscribe(res => {
+      
+      console.log(res.code);
 
       //Comprovem la resposta que ens dona de la bbdd
       if(res.code = "200"){
         //si es correcte tornarem a la pagina de tots els usauris
-        
-
         this.router.navigate(['/users-details',id]);
       }
       else{
+        this.router.navigate(['/users-details',id]);
         alert("Usuario no creado correctamente")
       }
-
-
-
-
     });
-
-
-
-
-
-
-
   });
     
  } 
 selectFile(event:any){
   //Funció per posar la fotografía diferent i guardar la foto i enviarla
-
-
 
 }
 }

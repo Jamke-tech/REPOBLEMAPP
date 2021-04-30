@@ -37,15 +37,18 @@ export class UsersComponent{
 
         this.authSvc.deleteUserB(this.user._id).pipe(take(1)).subscribe(res => {
             if(res.code == "200"){
-                //this.router.navigate(['/users-list']);
-                window.location.reload();
+                this.router.navigate(['/users-list']);
+                //window.location.reload();
+
+
                 console.log('Usuari eliminat amb exit')
 
             }
 
             else{
 
-                console.log('No s´ha pogut eliminar l´usuari')
+                console.log('No s´ha pogut eliminar l´usuari');
+                this.router.navigate(['/users-list']);
             }
 
         });
