@@ -1,0 +1,41 @@
+version: '3'
+
+
+services: 
+  backend:
+    build: ./backend
+    ports:
+      - "25000:25000"
+    depends_on: 
+      - database
+    command: npm start
+    networks: 
+        - backendNetwork
+        - frontendNetwork
+
+  frontend:
+    build: ./frontend/Angular/RepoblemAPP
+    ports:
+      - "4200:4200"
+    depends_on: 
+      - backend
+    networks: 
+      - frontendNetwork
+      
+  database:
+    image: mongo
+    restart: alaways
+    volumes:
+        - './data:/data/db'
+    networks:
+        - backendNetwork
+
+  app:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+
+networks:
+  frontendNetwork:
+
+  backendNetwork:
