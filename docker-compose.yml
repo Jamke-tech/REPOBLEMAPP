@@ -3,39 +3,41 @@ version: '3'
 
 services: 
   backend:
-    build: ./backend
+    image: jcardenasmarquez/repoblemapp_backend
     ports:
       - "25000:25000"
     depends_on: 
-      - database
+      - mongo
     command: npm start
     networks: 
-        - backendNetwork
+        - db-tier
         - frontendNetwork
 
   frontend:
-    build: ./frontend/Angular/RepoblemAPP
+    image: jcardenasmarquez/repoblemapp_frontend
     ports:
-      - "4200:4200"
+      - "4200:80"
     depends_on: 
       - backend
     networks: 
       - frontendNetwork
       
-  database:
-    image: mongo
-    restart: alaways
-    volumes:
-        - './data:/data/db'
-    networks:
-        - backendNetwork
+  mongo:
+        image: mongo
+        restart: always
+        volumes:
+          - mongo-data:/data/db
+        networks:
+          - db-tier
 
-  app:
-    build: 
-        context: .
-        dockerfile: Dockerfile
+
 
 networks:
   frontendNetwork:
 
-  backendNetwork:
+  db-tier:
+    driver: bridge
+
+volumes:
+    mongo-data:
+        driver: local
