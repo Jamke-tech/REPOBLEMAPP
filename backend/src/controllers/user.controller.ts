@@ -289,23 +289,33 @@ export async function updateUser( req: Request, res: Response): Promise<Response
     profilePhoto,
     birthDate,
   } = req.body;
+  try{
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      {
+        userName,
+        name,
+        surname,
+        password,
+        email,
+        phone,
+        profilePhoto,
+        birthDate,
+      },
+      { new: true }
+    );
+    return res.json({
+      code:"200",
+      message: "successfully updated",
+      updatedUser,
+    });
+  }
+  catch{
+    return res.json({
+      code:"500",
+      message: "User not updated"
+      
+    });
 
-  const updatedUser = await User.findByIdAndUpdate(
-    id,
-    {
-      userName,
-      name,
-      surname,
-      password,
-      email,
-      phone,
-      profilePhoto,
-      birthDate,
-    },
-    { new: true }
-  );
-  return res.json({
-    message: "successfully updated",
-    updatedUser,
-  });
+  }
 }
