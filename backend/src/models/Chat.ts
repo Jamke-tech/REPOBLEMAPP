@@ -11,10 +11,6 @@ const schema = new Schema({
     
 });
 
-interface IChat extends Document {
-    with: Types.ObjectId | Record<string,unknown>;
-    offerRelated: Types.ObjectId | Record<string,unknown>;
-    messages: string;
-};
+var ChatModel = mongoose.model('Chat',schema);
 
-export default model<IChat>('Chat',schema);
+export default ChatModel;

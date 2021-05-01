@@ -6,21 +6,16 @@ const schema = new Schema({
     title: String,
     description: String,
     pictures: String,
-    ubication: String,
+    place: {type: String},
+    point: { 
+        type: {type: mongoose.Schema.Types.Point},
+        coordinates: {type: [Number] }
+    },
     owner: {type: SchemaMongo.ObjectId, ref: "User"},
     village: String,
     price: Number,
 });
 
-interface IOffer extends Document {
-    title: string;
-    description: string;
-    pictures: string;
-    ubication: string;
-    owner: Types.ObjectId | Record<string, unknown>;
-    village: string;
-    price: number;
 
-};
-
-export default model<IOffer>('Offer',schema);
+var OfferModel = mongoose.model('Offer',schema);
+export default OfferModel;

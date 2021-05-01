@@ -55,6 +55,12 @@ router.route('/offer')
 
 
 
+
+//Per aconseguir les fotografies del backend
+
+router.route('/photo/:id')
+
+
 //Exportem totes les rutes per que les utilitzin
 
 export default router;

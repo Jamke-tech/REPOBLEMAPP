@@ -9,7 +9,7 @@ import { User } from '../../../shared/models/user.interface';
     template:`<div class="dsc-card" *ngIf="user">
     <a [routerLink]="['/users-details', user._id]">
         <div class="dsc-card__img">
-            <img src="{{user.profilePhoto}}" alt="" *ngIf="user.profilePhoto">
+            <img [src]="'http://localhost:25000/'+ user.profilePhoto" alt="" *ngIf="user.profilePhoto">
         </div>
         <div class="dsc-card__info">
             <h2>{{ user.userName }}</h2>

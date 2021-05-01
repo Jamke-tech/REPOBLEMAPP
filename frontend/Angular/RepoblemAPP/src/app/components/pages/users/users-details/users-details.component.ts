@@ -1,6 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.interface';
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class UsersDetailsComponent implements OnInit {
 
   usuario: any ;//Observable<User> | undefined;
-  constructor(private route: ActivatedRoute, private userSvc: AuthService) { 
+  constructor(private route: ActivatedRoute, private userSvc: AuthService,private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -44,6 +44,9 @@ export class UsersDetailsComponent implements OnInit {
         
     });
 
+  }
+  tornar(){
+    this.router.navigate(['/users-list']);
   }
 
 

@@ -16,6 +16,7 @@ export class AuthService {
   }
 
   updateUser(id: string,userName: string, name: string,surname: string, email: string, profilePhoto:string, phone: string,birthDate: Date,password:string): Observable<any> {
+    console.log("Updating User...")
     return this.http.put(`${environment.baseUrlAPI}/user/${id}`, 
     
     {
@@ -30,7 +31,7 @@ export class AuthService {
     });
   }
 
-  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,birthDate: Date, photoFile: any):Observable<any> {
+  registerUser(userName: string, name: string,surname: string, password: string, email: string, phone: string,birthDate: Date, photoFile: any): Observable<any> {
     
     var formData: any = new FormData();
     formData.append("image", photoFile);

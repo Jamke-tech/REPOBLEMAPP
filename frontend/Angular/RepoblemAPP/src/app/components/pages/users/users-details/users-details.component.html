@@ -10,7 +10,7 @@
       </div>
       <form class="needs-validation" novalidate>
         <div>
-            <img src="{{this.usuario?.profilePhoto}}"  alt="" style="width: 200px; height: 200px; ">
+            <img [src]="'http://localhost:25000/'+ usuario.profilePhoto"  alt="" style="width: 200px; height: 200px; ">
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
@@ -58,5 +58,9 @@
           </div>
         </div>
       </form>
+      <div >
+        <button  class="btn-desa" (click)="tornar()">Tornar a la llista</button> 
+      </div>
   </div>
+  
 </div>

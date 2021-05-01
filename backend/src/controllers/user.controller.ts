@@ -148,11 +148,10 @@ catch{
 }
 
 export async function createCompleteUser( req: Request,  res: Response ): Promise<Response> {
-  const { userName, name, surname, password, email, phone, birthDate } = req.body;
-  const data = { image : req.body.image};
-
+  const { userName, name, surname, password, email, phone, birthDate, image } = req.body;
+   
   //Subimos la fotografia a la nube
-  //cloudinary.uploader.upload(data.image);
+  //await cloudinary.uploader.upload(image);
 
   const newUser = {
     userName: userName,
@@ -161,7 +160,7 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
     password: password,
     email: email,
     phone: phone,
-    profilePhoto: "assets/"+req.file.filename,
+    profilePhoto: "uploads/"+req.file.filename,
     birthDate: birthDate,
     role: "USER"
   };
@@ -169,7 +168,7 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
   try{
     var errorSave : Boolean = false;
     const user = new User(newUser); // creem l'objecte de MongoDB
-    await user.save(function(err){
+    await user.save(function(err: boolean){
       console.log(err);
       if(err){
         errorSave = true;      
@@ -188,7 +187,7 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
     }
     else{
       //Eliminem la fotografia
-      await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ user.profilePhoto))
+      await fs.unlink(path.resolve(user.profilePhoto))
       return res.json({
         code: '200',
         message: "User correctly uploaded",
@@ -257,7 +256,7 @@ export async function deleteUser(req: Request, res: Response): Promise<Response>
   //Borramos la fotografia
   if(user){
     try{
-      await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ user.profilePhoto))//eliminamos la fotografia del servidor
+      await fs.unlink(path.resolve(user.profilePhoto))//eliminamos la fotografia del servidor
     }
     catch (e) {
       console.log(e);

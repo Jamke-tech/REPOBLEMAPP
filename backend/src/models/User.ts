@@ -17,19 +17,7 @@ const schema = new Schema({
 
 });
 
-interface IUser extends Document {
-    userName: string ;
-    name: string;
-    surname: string;
-    password: string;
-    email: string;
-    phone: number;
-    profilePhoto: string;
-    birthDate: Date;
-    savedOffers: Array<Types.ObjectId | Record<string, unknown>>;
-    social: Array<Types.ObjectId | Record<string, unknown>>;
-    role: string;
+var UserModel = mongoose.model('User',schema);
 
-};
+export default  UserModel;
 
-export default model<IUser>('User',schema);

@@ -30,16 +30,15 @@ export async function createOffer ( req: Request, res: Response): Promise<Respon
     try{
         var errorSave : Boolean = false;
         const offer = new Offer(newOffer);//creació del document de mongodb
-        await offer.save(function(err){
-            console.log(err);
-            if(err){
-                errorSave= true;
-            }
-            else{
-                errorSave= false
-            }
-        }
-        ); //guardem offer
+        await offer.save(function(err: boolean){
+          console.log(err);
+          if(err){
+            errorSave = true;      
+          }
+          else{
+            errorSave=false
+          }
+        } ); //guardem offer
         
         if (errorSave){
             return res.json({
