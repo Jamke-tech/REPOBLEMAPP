@@ -6,7 +6,7 @@ import { User } from '../../../shared/models/user.interface';
 
 @Component({
     selector:'app-users',
-    template:'./user.card.html',
+    template:'./user-card.html',
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 
