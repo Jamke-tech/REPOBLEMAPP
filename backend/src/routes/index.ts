@@ -31,6 +31,7 @@ router.route("/create/admin")
 
 router.route("/user")
     .post(multer.single('image'),createCompleteUser);
+    //.post(createCompleteUser);
 
 router.route('/users')
     .get(getUsers);
