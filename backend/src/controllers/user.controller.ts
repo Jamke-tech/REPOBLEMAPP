@@ -166,16 +166,12 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
       }
     }
     ); //guardem la foto amb mongoose
-
     
-
     if(errorSave){
       return res.json({
         code: '403',
         message: "Error en dades d'usuari"
       });
-
-
     }
     else{
       //Eliminem la fotografia
@@ -185,8 +181,6 @@ export async function createCompleteUser( req: Request,  res: Response ): Promis
         message: "User correctly uploaded",
         id: user.id
       });
-      
-
     }
   }
 
@@ -264,16 +258,13 @@ export async function deleteUser(req: Request, res: Response): Promise<Response>
     }
 
   }
-
-
-  
+ 
   catch (e){
     console.log(e);
     return res.json({
       code: '500',
       message: "Server Down or errorn on BBDD",
       id: null});
-
   }
 }
 
