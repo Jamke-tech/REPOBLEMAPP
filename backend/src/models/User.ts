@@ -7,7 +7,7 @@ const schema = new Schema({
     name: String,
     surname: String,
     password: String,
-    email: {type: String , unique: true},
+    email: {type: String , unique: true, required: true},
     phone: Number,
     profilePhoto: String,
     birthDate: Date,
