@@ -1,1 +1,31 @@
-<p>offers-list works!</p>
+<div class="row">
+    <div class="col-12" style="column-count: 2;">
+        <h1 style="margin-top: 10px;">Llista d'ofertes</h1>
+        <a [routerLink]="['/register']">Afegir oferta   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let offer of offers">
+        <div class="card">
+            <div class="image">
+              <a [routerLink]="['/offer-details', offer._id]">
+                <img
+                  [src]="offer.pictures"
+                  [alt]="offer.title"
+                  class="card-img-top"
+                />
+              </a>
+            </div>
+            <div class="card-inner">
+              <div class="header">
+                <a [routerLink]="['/offer-details', offer._id]">
+                  <h2>{{ offer.title | slice: 0:15}}</h2>
+                </a>
+                <h4 class="text-muted">{{ offer.place }}</h4>
+                <small class="text-muted">{{ offer.owner.userName }}</small>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

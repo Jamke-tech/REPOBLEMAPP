@@ -1,4 +1,4 @@
-import { createOffer, deleteOffer } from '../controllers/offer.controller';
+import { createOffer, deleteOffer, getOffer, getOffers } from '../controllers/offer.controller';
 import { Router } from "express";
 import {
   createCompleteUser,
@@ -51,10 +51,13 @@ router.route("/user/:id")
 //RUTES PER LES OFERTES
 router.route('/offer')
     .post(createOffer)
+
+router.route('/offers')
+    .get(getOffers)
+
+router.route('/offer/:id')
+    .get(getOffer)
     .delete(deleteOffer)
-
-
-
 
 //Per aconseguir les fotografies del backend
 
