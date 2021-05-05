@@ -204,6 +204,63 @@ catch{
 
 }
 }
+export async function createUserNoPhoto( req: Request,  res: Response ): Promise<Response> {
+  const { userName, name, surname, password, email, phone, birthDate } = req.body;
+   console.log(req.body);
+  //Subimos la fotografia a la nube
+  //await cloudinary.uploader.upload(image);
+
+  const newUser = {
+    userName: userName,
+    name: name,
+    surname: surname,
+    password: password,
+    email: email,
+    phone: phone,
+    profilePhoto: "uploads/noprofile.png",
+    birthDate: birthDate,
+    role: "USER"
+  };
+  console.log(newUser);
+  try{
+    var errorSave : Boolean = false;
+    const user = new User(newUser); // creem l'objecte de MongoDB
+    await user.save(function(err: boolean){
+      console.log(err);
+      if(err){
+        errorSave = true;      
+      }
+      else{
+        errorSave=false
+      }
+    }
+    ); //guardem la foto amb mongoose
+    
+    if(errorSave){
+      return res.json({
+        code: '403',
+        message: "Error en dades d'usuari"
+      });
+    }
+    else{
+      //Eliminem la fotografia
+      await fs.unlink(path.resolve(user.profilePhoto))
+      return res.json({
+        code: '200',
+        message: "User correctly uploaded",
+        id: user.id
+      });
+    }
+  }
+
+catch{
+  return res.json({
+    code: '505',
+    message: "Server Down",
+  });
+
+}
+}
 
 
 export async function getUsers(req: Request, res: Response): Promise<Response> {

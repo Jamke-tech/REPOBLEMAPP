@@ -3,7 +3,7 @@
       <h4 class="mb-3" style="margin-top: 30px; font-size: 30px;">Dades de l'usuari :</h4>
       <form class="needs-validation" novalidate>
         <div>
-            <img src="{{this.usuario?.profilePhoto}}" alt="" style="width: 200px; height: 200px; ">
+            <img [src]="'http://localhost:25000/'+ this.usuario?.profilePhoto" alt="" style="width: 200px; height: 200px; ">
             <input  type="file" #profilePhoto class="form-control" id="profilePhoto"  placeholder="" value="" accept="image/*" (change)="selectFile($event)">
         </div>
         <div class="row">

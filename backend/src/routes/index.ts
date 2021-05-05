@@ -8,7 +8,8 @@ import {
   deleteUser,
   loginUsers,
   createADMIN,
-  loginADMIN
+  loginADMIN,
+  createUserNoPhoto
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -30,8 +31,8 @@ router.route("/create/admin")
     .post(createADMIN) //Para crear un administrador
 
 router.route("/user")
-    .post(multer.single('image'),createCompleteUser);
-    //.post(createCompleteUser);
+    .post(multer.single('image'),createCompleteUser)
+    .put(createUserNoPhoto);
 
 router.route('/users')
     .get(getUsers);
