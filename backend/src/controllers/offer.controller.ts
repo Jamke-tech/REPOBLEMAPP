@@ -105,6 +105,7 @@ export async function getOffers (req:Request, res: Response): Promise<Response>{
         return res.json({
             code: '200',
             message: 'List of Offers',
+            numberoffers: offers.length,
             offersList: offers
             });
     }
@@ -112,6 +113,7 @@ export async function getOffers (req:Request, res: Response): Promise<Response>{
       return res.json({
         code: '500',
         message: 'Server Down or BBDD broken',
+        numberoffers: 0,
         usersList: null
       }
         );

@@ -1,4 +1,4 @@
-import { createOffer, deleteOffer } from '../controllers/offer.controller';
+import { createOffer, deleteOffer, getOffers } from '../controllers/offer.controller';
 import { Router } from "express";
 import {
   createCompleteUser,
@@ -53,7 +53,6 @@ router.route("/user/:id")
 router.route('/offer')
     .post(createOffer)
     .delete(deleteOffer)
-
 
 
 
