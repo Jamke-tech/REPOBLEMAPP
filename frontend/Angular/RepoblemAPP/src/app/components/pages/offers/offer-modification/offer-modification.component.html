@@ -1,0 +1,60 @@
+<div class="row justify-content-center" *ngIf="offer as offer">
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3" style="margin-top: 30px;">Dades de l'oferta</h4>
+      <form class="needs-validation" novalidate>
+        <div>
+            <img [src]="'http://localhost:25000/'+ offer.pictures"  alt="" style="width: 200px; height: 200px; ">
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="title">Titol:</label>
+            <div>
+                <input #title class="form-control" id="titleData" value="{{this.offer?.title}}">
+            </div>
+            
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="description">Descripció:</label>
+            <div>
+                <input #description class="form-control" id="descripcioData" value="{{this.offer?.description">
+            </div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="owner">Propietari: </label>
+          <div class="input-group">
+            <input #owner class="form-control" id="ownerData" value="{{this.offer?.owner}}">
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="place">On es troba?</label>
+          <div>
+              <input class="form-control" id="placeData" value="{{this.offer?.place">
+          </div>
+        </div>
+  
+        
+        <div class="mb-3">
+          <label for="village"> Població: </label>
+          <div>
+              <input #village class="form-control" id="villageData" value="{{this.offer?.village}}">
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="price">Preu</label>
+            <div>
+              <label class="text-muted" id="priceData">{{ this.offer?.price}}</label>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div >
+        <button  class="btn-desa" (click)="tornar()">Tornar a la llista</button> 
+      </div>
+  </div>
+  
+</div>
