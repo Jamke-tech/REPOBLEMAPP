@@ -9,8 +9,9 @@ export async function createOffer ( req: Request, res: Response): Promise<Respon
     const {
         title,
         description,
-        pictures,
-        ubication,
+        //pictures,
+        place,
+        coordinates, // [47.2555685 , 1.2568]
         owner,
         village,
         price,
@@ -20,8 +21,11 @@ export async function createOffer ( req: Request, res: Response): Promise<Respon
     const newOffer = {
         title: title,
         description: description,
-        pictures: req.file.path,
-        ubication: ubication,
+       // pictures: req.file.path,
+        place: place,
+        point:{
+          coordinates:coordinates
+        },
         owner: owner,
         village: village,
         price: price
@@ -49,7 +53,7 @@ export async function createOffer ( req: Request, res: Response): Promise<Respon
 
         else{
             //Eliminem les fotos
-            await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ offer.pictures))
+            //await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ offer.pictures))
             return res.json({
                 code: '200',
                 message: "Offer correctly uploaded",
@@ -57,7 +61,8 @@ export async function createOffer ( req: Request, res: Response): Promise<Respon
             });
         }
     }
-    catch{
+    catch(e){
+      console.log(e);
         return res.json({
             code: '505',
             message: "Server Down",
@@ -73,7 +78,7 @@ export async function deleteOffer (req: Request, res: Response): Promise<Respons
         const {id} = req.params;
         const offer = await Offer.findByIdAndDelete(id);
         if(offer){
-            await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ offer.pictures))//eliminamos la fotografia del servidor
+            //await fs.unlink(path.resolve("../frontend/Angular/RepoblemAPP/src/"+ offer.pictures))//eliminamos la fotografia del servidor
             
             return res.json({
               code: '200',
@@ -100,12 +105,12 @@ export async function deleteOffer (req: Request, res: Response): Promise<Respons
 
 export async function getOffers (req:Request, res: Response): Promise<Response>{
     //Funció que retorna tota la llista de ofertes sense cap filtre
-    const offers= await Offer.find();
+    const offers= await Offer.find().populate();
     try{
         return res.json({
             code: '200',
             message: 'List of Offers',
-            numberoffers: offers.length,
+            numberOffers: offers.length,
             offersList: offers
             });
     }
@@ -113,7 +118,7 @@ export async function getOffers (req:Request, res: Response): Promise<Response>{
       return res.json({
         code: '500',
         message: 'Server Down or BBDD broken',
-        numberoffers: 0,
+        numberOffers: 0,
         usersList: null
       }
         );
@@ -122,7 +127,7 @@ export async function getOffers (req:Request, res: Response): Promise<Response>{
 
 export async function getOffer(req: Request, res: Response): Promise<Response> {
     try{
-    const offer = await Offer.findById(req.params.id);
+    const offer = await Offer.findById(req.params.id).populate();
     
     
     return res.json({
@@ -138,6 +143,7 @@ export async function getOffer(req: Request, res: Response): Promise<Response> {
       }
   
   }
+  
 
   export async function updatedOffer(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;

@@ -9,7 +9,8 @@ import {
   loginUsers,
   createADMIN,
   loginADMIN,
-  createUserNoPhoto
+  createUserNoPhoto,
+  addOfferToFavourites
 } from "../controllers/user.controller";
 import multer from "../libs/multer";
 
@@ -48,7 +49,8 @@ router.route("/user/:id")
     .get(getUser)
     .delete(deleteUser);
     
-
+router.route("/user/addFavourite")
+    .post(addOfferToFavourites)
 //RUTES PER LES OFERTES
 router.route('/offer')
     .post(createOffer)

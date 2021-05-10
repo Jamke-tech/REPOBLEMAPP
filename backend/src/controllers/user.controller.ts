@@ -219,7 +219,9 @@ export async function createUserNoPhoto( req: Request,  res: Response ): Promise
     phone: phone,
     profilePhoto: "uploads/noprofile.png",
     birthDate: birthDate,
-    role: "USER"
+    role: "USER",
+    savedOffers: [],
+    social: [],
   };
   console.log(newUser);
   try{
@@ -265,7 +267,7 @@ catch{
 
 export async function getUsers(req: Request, res: Response): Promise<Response> {
   try{
-    const Users = await User.find();
+    const Users = await User.find().populate();
     
     return res.json({
       code: '200',
@@ -288,7 +290,7 @@ export async function getUsers(req: Request, res: Response): Promise<Response> {
 
 export async function getUser(req: Request, res: Response): Promise<Response> {
   try{
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id).populate();
   
   
   return res.json({
@@ -382,4 +384,53 @@ export async function updateUser( req: Request, res: Response): Promise<Response
     });
 
   }
+}
+
+export async function addOfferToFavourites(req: Request,res:Response): Promise<Response>{
+  //Aquesta funció afegeix la oferta que ens pasen per body ( id ), al usuari que ens passen ( també id)
+
+  const{ idUser, idOffer}=req.body;
+  try{
+    //hem de buscar l'usuari i modificar-lo
+    //recollim usuari i afegim al vector de ofertes la nostre despres el guardem amb un update
+
+    console.log(idUser);
+    const user = await User.findById(idUser,'savedOffers');
+    var vectorOffers = user.savedOffers;
+    vectorOffers.push(idOffer);
+    //console.log(vectorOffers);
+
+    const userUpdated = await User.findByIdAndUpdate(
+      idUser,
+      {$set:{
+        "savedOffers": vectorOffers,
+
+      },}
+    );
+
+    return res.json({
+      code:"200",
+      message: "successfully updated",
+      user: userUpdated,
+    }); 
+
+
+
+
+  }
+  catch (e){
+    console.log(e);
+    return res.json({
+      code:"500",
+      message: "Error en el servidor",
+      user: null,
+    }); 
+  }
+
+
+
+
+
+
+
 }
