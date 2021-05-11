@@ -3,7 +3,7 @@ version: '3'
 
 services: 
   backend:
-    image: jcardenasmarquez/repoblemapp_backend
+    build: ./backend
     ports:
       - "25000:25000"
     depends_on: 
